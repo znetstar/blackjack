@@ -1,0 +1,23 @@
+{
+  "name": "blackjack",
+  "version": "1.0.0",
+  "description": "Blackjack",
+  "scripts": {
+    "start": "node_modules/.bin/ws -d htdocs",
+    "postinstall": "bower install --allow-root"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/znetstar/blackjack.git"
+  },
+  "author": "Zachary Boyd <zachary@zacharyboyd.nyc>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/znetstar/blackjack/issues"
+  },
+  "homepage": "https://github.com/znetstar/blackjack#readme",
+  "dependencies": {
+    "bower": "^1.7.1",
+    "local-web-server": "^1.1.0"
+  }
+}
