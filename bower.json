@@ -1,0 +1,21 @@
+{
+  "name": "blackjack",
+  "description": "Blackjack",
+  "main": "",
+  "authors": [
+    "Zachary Boyd <zachary@zacharyboyd.nyc>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/znetstar/blackjack",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

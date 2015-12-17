@@ -1,9 +1,10 @@
 {
   "name": "blackjack",
   "version": "1.0.0",
-  "description": "Blackjack",
+  "main": "blackjack.js",
+  "description": "A library for playing Blackjack",
   "scripts": {
-    "start": "node_modules/.bin/ws -d htdocs",
+    "start": "node_modules/.bin/ws",
     "postinstall": "bower install --allow-root"
   },
   "repository": {
