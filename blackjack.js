@@ -54,6 +54,30 @@ Blackjack.Card = (function () {
 	return Card;
 })();
 
+Blackjack.Ace = (function () {
+	const ACE_CUSTOM_VALUE = Symbol('custom value');
+	return class Ace extends Blackjack.Card {
+		constructor(id) {
+			if (![0, 13, 26, 39].some((x) => x === id)) {
+				throw new Error('Aces can only be ids 0, 13, 26 or 39 ('+[Blackjack.Cards[0], Blackjack.Cards[13], Blackjack.Cards[26], Blackjack.Cards[39	]].join(',')+')');
+			} else {
+				super(id);
+			}
+		}
+
+		get value() {
+			return this[ACE_CUSTOM_VALUE] || super.value;
+		}
+
+		set value(val) {
+			if (val !== 1 && val !== 11) {
+				throw new Error('An ace must equal 1 or 11');
+			}
+			this[ACE_CUSTOM_VALUE] = val;
+		}
+	};
+})();
+
 // add a new class for decks
 Blackjack.Deck = (function () {
 	const CARDS_IN_DECK = 52;
@@ -64,7 +88,19 @@ Blackjack.Deck = (function () {
 			// create a new array of intergers ranging from 0-51
 			const intArray = Array.from(Array(CARDS_IN_DECK).keys());
 			// map that array to the Card constructor
-			this[CARDS] = intArray.map((int) => new Blackjack.Card(int));
+			this[CARDS] = intArray.map(function (id) {
+				switch (id) {
+					case 0:
+					case 13:
+					case 26:
+					case 39:
+						return new Blackjack.Ace(id);
+						break;
+					default:
+						return new Blackjack.Card(id);
+						break;
+				}
+			});
 		}
 		get cards() {
 			// Return an immutable array of cards

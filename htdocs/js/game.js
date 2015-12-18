@@ -131,6 +131,7 @@ bind_control('play', function () {
 			.removeClass('four')
 			.addClass('twelve');
 		$('.hand.active .card').slice(1).each(function (){
+			$(this).removeClass('back-side').addClass('front-side');
 			flip_card(this);
 		});
 	});
@@ -180,7 +181,7 @@ bind_control('next', function (){
 		}).length);
 		
 		remaining = ($remaining > 1) && remaining;
-		debugger
+
 		if (remaining) {
 			draw_all(window.turn_index++);
 		}
@@ -203,3 +204,18 @@ bind_control('next', function (){
 
 window.game.start_round();
 draw_all(window.turn_index++);	
+
+$(document).on({
+	click: function () {
+		let ace = $(this);
+		ace = get_player($('.active')).hand.find((card) => card.id === parseInt($(this).attr('data-id')));
+		if (ace instanceof Blackjack.Ace) {
+			let new_val = ((ace.value === 1) && 11) || 1;
+			ace.value = new_val;
+		} else {
+			throw new Error('tried to edit a non ace');
+		}
+		
+		draw_player('.hand.active', get_player('.active'));
+	}
+}, '.active.twelve .card-0.front-side, .active.twelve .card-13.front-side, .active.twelve .card-26.front-side, .active.twelve .card-39.front-side');

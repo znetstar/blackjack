@@ -26,13 +26,27 @@
 	}
 }
 
-@keyframes star {
+@keyframes pulse {
 	0% {
 		transform: scale(1);
 	}
 
 	50% {
 		transform: scale(1.25);
+	}
+
+	100% {
+		transform: scale(1)
+	}
+}
+
+@keyframes pulse-light {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.10);
 	}
 
 	100% {

@@ -5,10 +5,10 @@ function random_int(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function render_card(id, hidden) {
+function render_card(id, hidden, value) {
 	hidden = !!hidden;
 	let suit = Blackjack.Suits[Math.floor(id/13)].name;
-	let html = ejs.render(window.card_template, { hidden: hidden, label: CARDS[id], suit: suit, id: id });
+	let html = ejs.render(window.card_template, { hidden: hidden, label: CARDS[id], suit: suit, id: id, value: value });
 	return html;
 };
 
@@ -17,7 +17,7 @@ function render_player (player, hide) {
 	return ejs.render(lscache.get('hand'), { player: player, hide: (!!hide) });
 };
 
-const cards = window.screen.width/2;
+const cards = (window.screen.width/2)+1000;
 
 
 
@@ -64,6 +64,13 @@ var flip_card = window.flip_card = function (card) {
  	} else {
  		$(card).attr('value', $(card).text());
 	}
+	if (!$(card).parents('.card').hasClass('front-side')){
+		$(card).parents('.card').removeClass('front-side').addClass('back-side');
+	}
+	else {
+		$(card).parents('.card').removeClass('back-side').addClass('front-side');
+	}
+
 };
 
 $(document).on({

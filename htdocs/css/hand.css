@@ -60,5 +60,4 @@
 .hand.active .star {
   background: black;
   color: white;
-  animation: star 1s infinite;
 }

@@ -18,7 +18,7 @@
 	</div>
 	<div class="row">
 		<% player.hand.forEach(function (card, i){ %>
-		<%- render_card(card.id, (hide ? (i !== 0) : false))%>
+		<%- render_card(card.id, (hide ? (i !== 0) : false), (!hide && card.value))%>
 		<% }) %>
 	</div>
 	<div class="row pointer">

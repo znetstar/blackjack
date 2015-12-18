@@ -37,3 +37,16 @@
 
 .background .card:hover {
 }
+
+
+/* Aces */
+.active .card-0.front-side:hover, .active .card-13.front-side:hover, .active .card-26.front-side:hover, .active .card-39.front-side:hover {
+  animation: pulse 1s infinite;
+  cursor: text;
+}
+
+.active .card-0.front-side, .active .card-13.front-side, .active .card-26.front-side, .active .card-39.front-side {
+  animation: pulse-light 1s infinite;
+  cursor: text;
+}
+ 
