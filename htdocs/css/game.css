@@ -1,0 +1,15 @@
+.game .controls {
+	text-align: center;
+}
+
+.game .controls .control {
+	display: inline-block;
+}
+
+.game .controls .control {
+	background: transparent;
+}
+
+.game .hands {
+	text-align: center;
+}

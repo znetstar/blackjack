@@ -3,15 +3,16 @@
 // create a new namespace
 var Blackjack = {};
 
-Blackjack.Cards = require('./data/cards.js');
+if (typeof(require) !== 'undefined') 
+	Blackjack.Cards = require('./data/cards.js');
 
 // add an array of card types
 Blackjack.Suits = (function () {
 	const types = [
-		{ label: '♠', color: 'black' }, 
-		{ label: '♥', color: 'red' },
-		{ label: '♦', color: 'red' },
-		{ label: '♣', color: 'black' }
+		{ label: '♠', name: 'spades' }, 
+		{ label: '♥', name: 'hearts' },
+		{ label: '♦', name: 'diamonds' },
+		{ label: '♣', name: 'clubs' }
 	];
 	return types;
 })();
@@ -119,6 +120,7 @@ Blackjack.Player = (function() {
 	return class Player {
 		constructor(name) {
 			this[HAND] = [];
+			this.score = 0;
 			this[PLAYER_STATE] = Blackjack.PLAYER_STATES.NONE;
 			this.name = name;
 		}
@@ -165,10 +167,22 @@ Blackjack.Game = (function() {
 			this.in_progress = false;
 			this.players = Array
 				.from(Array(num_players).keys())
-				.map((id) => new Blackjack.Player());
+				.map((id) => new Blackjack.Player('Player '+(id+1)));
+		}
+		get round_in_progress() {
+			return (this[CURRENT_ROUND].length > 0);
 		}
 		get current_player() {
 			return (this.players[this[PLAYER_INDEX]]);
+		}
+		get winners () {
+			return this.players
+					.filter((player) => (player.state !== Blackjack.PLAYER_STATES.BUST) && (player.hand_total < 22))
+					.sort((player_a, player_b) => player_b.hand_total - player_a.hand_total);
+		}
+		get losers () {
+			return this.players
+					.filter((player) => player.state === Blackjack.PLAYER_STATES.BUST);
 		}
 		start_round() {
 			if (this.in_progress)
@@ -181,15 +195,28 @@ Blackjack.Game = (function() {
 		end_game () {
 			if (this.in_progress)
 				end_round()
+
+		}
+		end_round () {
+			this.in_progress = false;
+			this[PLAYER_INDEX] = 0;
 			this.players
 				.map((player) => player.take(0, player.cards_in_hand))
 				.forEach((hand) => 
 					hand.forEach((card) => this.deck.place(card))
 				);
 		}
-		end_round () {
-			this.in_progress = false;
-			this[PLAYER_INDEX] = 0;
+		process_play(player) {
+			player.previous_state = player.state;
+			if (player.state === Blackjack.PLAYER_STATES.HIT) {
+				player.place(this.deck.draw(1));
+
+				if (player.hand_total === 21) {
+					player.state = Blackjack.PLAYER_STATES.WIN;
+				} else if (player.hand_total > 21) {
+					player.state = Blackjack.PLAYER_STATES.BUST;
+				}
+			}
 		}
 		next_player() {
 			if (this.deck.cards.length < 1) {
@@ -206,27 +233,8 @@ Blackjack.Game = (function() {
 			}
 			else {
 				for (var player of this.players) {
-					if (player.state === Blackjack.PLAYER_STATES.HIT) {
-						player.place(this.deck.draw(1));
-
-						if (player.hand_total === 21) {
-							player.state = Blackjack.PLAYER_STATES.WIN;
-						} else if (player.hand_total > 21) {
-							player.state = Blackjack.PLAYER_STATES.BUST;
-						}
-					}
-				}
-
-				let losers = this.players
-					.filter((player) => player.state === Blackjack.PLAYER_STATES.BUST)
-					.join("\n");
-				let winners = this.players
-					.filter((player) => player.state !== Blackjack.PLAYER_STATES.BUST)
-					.sort((player_a, player_b) => player_b.hand_total - player_a.hand_total)
-					.join("\n");
-
-				console.log("losers", losers)
-				console.log("winners", winners)
+					this.process_play(player);
+				} 
 			}
 		}
 	};

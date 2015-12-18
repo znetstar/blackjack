@@ -1,0 +1,64 @@
+.hand {
+	opacity: .5;
+	display: inline-block;
+	transition: 1s all;
+}
+
+.hand.active {
+	opacity: 1;
+}
+
+.hand .pointer i, .hand .win i {
+	display: none;
+}
+
+.hand.winner .win i {
+  font-size: 6em;
+  top: 1em;
+  position: relative;
+  color: white;
+  display: block;
+ 	animation: bounce-pointer .5s infinite;
+}
+
+.hand.select.active .pointer i {
+  font-size: 6em;
+  top: 1em;
+  position: relative;
+  color: white;
+  display: block;
+}
+
+.hand.active .pointer i {
+	animation: bounce-pointer .5s infinite;
+}
+
+.hand h4 {
+	opacity: 0;
+}
+
+.hand.twelve h4 {
+	opacity: 1;
+}
+
+.hand.twelve h4 i {
+	margin: 1rem;
+}
+
+.hand .stars {
+  line-height: 4em;
+  min-height: 4em;
+  display: inline-block;
+}
+
+.hand .stars .star {
+  color: white;
+  background: black;
+  border-top: none;
+}
+
+.hand.active .star {
+  background: black;
+  color: white;
+  animation: star 1s infinite;
+}

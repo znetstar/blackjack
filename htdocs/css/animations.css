@@ -1,0 +1,41 @@
+@keyframes enlarge-flip {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(-1, 1);
+	}
+
+	100% {
+		transform: scale(1)
+	}
+}
+
+@keyframes bounce-pointer {
+	0% {
+		top: 1em;
+	}
+
+	50% {
+		top: .75em
+	}
+
+	100% {
+		top: 1em;
+	}
+}
+
+@keyframes star {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.25);
+	}
+
+	100% {
+		transform: scale(1)
+	}
+}

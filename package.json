@@ -19,6 +19,8 @@
   "homepage": "https://github.com/znetstar/blackjack#readme",
   "dependencies": {
     "bower": "^1.7.1",
+    "express": "^4.13.3",
+    "jquery": "^2.1.4",
     "local-web-server": "^1.1.0"
   }
 }

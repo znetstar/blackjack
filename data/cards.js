@@ -59,3 +59,5 @@ const CARDS = [
 
 if (typeof(module) !== 'undefined') 
 	module.exports = CARDS;
+if (typeof(Blackjack) !== 'undefined')
+	Blackjack.Cards = CARDS;

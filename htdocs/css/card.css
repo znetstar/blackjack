@@ -1,0 +1,39 @@
+.card, .hand .stars .star {
+  margin: .5rem;
+  font-size: 4rem;
+  line-height: 5rem;
+  display: inline-block;
+  transition: all .5s;
+  opacity: 1;
+  min-height: 1em;
+  min-width: 1em;
+  background: white;
+  /* padding: 0px; */
+  border-top: white solid 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.card div {
+  height: 100%;
+  width: 100%;
+}
+
+
+.spades, .clubs {
+  color: black;
+}
+
+.hearts, .diamonds {
+  color: red;
+}
+
+.background .card {
+  color: white;
+  background: transparent;
+  border-top: transparent;
+}
+
+.background .card:hover {
+}

@@ -16,6 +16,10 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "ejs": "~1.0.0",
+    "skeleton": "~2.0.4",
+    "font-awesome": "~4.5.0",
+    "lscache": "~1.0.5"
   }
 }

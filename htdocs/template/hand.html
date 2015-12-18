@@ -1,0 +1,30 @@
+<div data-name="<%= player.name %>" class="hand <%= size %> columns">
+	<div class="row big-font">
+		<h3><%=player.name%></h3>
+		<div class="stars">
+			<% for (var i = 0; i < player.score; i++) { %>
+			<span class="star">🃏</span>
+			<% } %>
+		</div>
+		<h4 style="color: <%= ((player.hand_total > 21) ? 'red' : 'white')%>">
+			<% if (player.hand_total === 21) { %>
+			<i class="fa fa-trophy"></i><span><%=player.hand_total%></span><i class="fa fa-trophy"></i>
+			<% } else if (player.hand_total > 21) { %>
+			<i class="fa fa-frown-o"></i><span><%=player.hand_total%></span><i class="fa fa-frown-o"></i>
+			<% } else { %>
+			<span><%=player.hand_total%></span>
+			<% } %>
+		</h4>
+	</div>
+	<div class="row">
+		<% player.hand.forEach(function (card, i){ %>
+		<%- render_card(card.id, (hide ? (i !== 0) : false))%>
+		<% }) %>
+	</div>
+	<div class="row pointer">
+		<i class="fa fa-hand-pointer-o"></i>
+	</div>
+	<div class="row win">
+		<i class="fa fa-trophy"></i>
+	</div>
+</div>
