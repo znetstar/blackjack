@@ -40,15 +40,21 @@ function load_home () {
 var start_game = function () {
 	$(this).fadeOut().off('click');
 	$('.background div').css('background', 'transparent');
+	var delay = 4;
+	var timeouts = [];
 	$('.background .card').each(function () {
-		$(this).css({transition: 'all 10s', position: 'relative' }).animate({ left: random_int(window.screen.width, window.screen.width+1000)+'px', top: random_int(window.screen.height, window.screen.height+1000)+'px' });
+		timeouts.push(setTimeout(function (ele) {
+			$(ele).css({transition: 'all 10s', position: 'relative' }).animate({ left: random_int(window.screen.width, window.screen.width+1000)+'px', top: random_int(window.screen.height, window.screen.height+1000)+'px' });
+		}, delay, this));
+		delay = delay + 10;
 	});
 
 	setTimeout(function (){
+		timeouts.forEach(function (t) { clearTimeout(t);});
 		$('.background .card').remove();
 		$('.background .logo').css({ margin: '0 auto', width: '100%', 'text-align': 'center' }).delay(1000).css({});
 		load_page('setup');
-	},4000)
+	},5000)
 }
 
 $('.start').click(start_game);

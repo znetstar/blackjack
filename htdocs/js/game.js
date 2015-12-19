@@ -131,10 +131,7 @@ bind_control('play', function () {
 			.removeClass('select')
 			.removeClass('four')
 			.addClass('twelve');
-		$('.hand.active .card').slice(1).each(function (){
-			$(this).removeClass('back-side').addClass('front-side');
-			flip_card(this);
-		});
+		draw_player('.hand.active', get_player('.hand.active'), false, 'twelve');
 	});
 	
 });
@@ -194,7 +191,6 @@ bind_control('next', function (){
 			}
 			else {
 				window.no_winner = true;
-				console.log('no winner')
 			}
 		}
 	} else {
