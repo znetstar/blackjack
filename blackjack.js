@@ -192,6 +192,14 @@ Blackjack.Player = (function() {
 	};
 })()
 
+Blackjack.Dealer = (function () {
+	return class Dealer extends Blackjack.Player {
+		constructor() {
+			super('Dealer');
+		}
+	};
+})();
+
 Blackjack.Game = (function() {
 	const CURRENT_ROUND = Symbol('current round');
 	const PLAYER_INDEX = Symbol('player index');
@@ -203,7 +211,7 @@ Blackjack.Game = (function() {
 			this.in_progress = false;
 			this.players = Array
 				.from(Array(num_players).keys())
-				.map((id) => new Blackjack.Player('Player '+(id+1)));
+				.map((id) => ((id > 0) && new Blackjack.Player('Player '+id)) || new Blackjack.Dealer());
 		}
 		get round_in_progress() {
 			return (this[CURRENT_ROUND].length > 0);

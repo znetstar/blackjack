@@ -1,4 +1,4 @@
-FROM node:5.2.0
+FROM node:5.3.0
 
 MAINTAINER Zachary Boyd <zachary@zacharyboyd.nyc>
 

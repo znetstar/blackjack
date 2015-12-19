@@ -17,7 +17,7 @@ function render_player (player, hide) {
 	return ejs.render(lscache.get('hand'), { player: player, hide: (!!hide) });
 };
 
-const cards = (window.screen.width/2)+1000;
+const cards = (window.screen.width/2)+500;
 
 
 
@@ -46,7 +46,7 @@ var start_game = function () {
 
 	setTimeout(function (){
 		$('.background .card').remove();
-		$('.background .logo').css({ margin: '0 auto', width: '100%', 'text-align': 'center' }).delay(1000).css({'box-shadow': '0px 0px 10rem white'});
+		$('.background .logo').css({ margin: '0 auto', width: '100%', 'text-align': 'center' }).delay(1000).css({});
 		load_page('setup');
 	},4000)
 }

@@ -61,3 +61,7 @@
   background: black;
   color: white;
 }
+
+.hand.active.select {
+  cursor:pointer;
+}

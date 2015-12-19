@@ -98,8 +98,9 @@ function draw_controls (player, force_next) {
 			$('.controls').append(render_control('next', "Next"));
 			break;
 		default:
+			if ((!(player instanceof Blackjack.Dealer)) || (player.hand_total >= 17))
+				$('.controls').append(render_control('stay', "Stay"));
 			$('.controls').append(render_control('hit', "Hit"));
-			$('.controls').append(render_control('stay', "Stay"));
 			break;
 	}
 }
@@ -215,7 +216,11 @@ $(document).on({
 		} else {
 			throw new Error('tried to edit a non ace');
 		}
-		
+		draw_controls(get_player('.active'));
 		draw_player('.hand.active', get_player('.active'));
 	}
 }, '.active.twelve .card-0.front-side, .active.twelve .card-13.front-side, .active.twelve .card-26.front-side, .active.twelve .card-39.front-side');
+
+$(document).on({ 
+	click: function () { $('.play').click() } 
+}, '.active.select');
