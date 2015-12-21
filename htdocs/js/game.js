@@ -36,7 +36,7 @@ function draw_winner (winner) {
 			.fadeIn()
 			.addClass('winner')
 			.addClass('active')
-			.removeClass('four')
+			.removeClass('five')
 			.addClass('twelve');
 
 		draw_player($winner, winner, false);
@@ -51,7 +51,7 @@ function draw_all(index) {
 	$('.game .hands .hand')
 		.removeClass('winner')
 		.removeClass('twelve')
-		.addClass('four')
+		.addClass('five')
 		.removeClass('active')
 		.fadeIn();
 
@@ -62,11 +62,11 @@ function draw_all(index) {
 		lscache.setBucket('templates');
 		
 		if ($('[data-name="'+player.name+'"]').length){
-			draw_player($('[data-name="'+player.name+'"]'), player, true, 'four');
+			draw_player($('[data-name="'+player.name+'"]'), player, true, 'five');
 		}
 		else {
 			let template = lscache.get('hand');
-			let $player = $(ejs.render(template, { hide: true, size: 'four', player: player }));
+			let $player = $(ejs.render(template, { hide: true, size: 'five', player: player }));
 			$player.appendTo(game);
 		}
 	}
@@ -129,7 +129,7 @@ bind_control('play', function () {
 		$('.hand.active .pointer').fadeOut();
 		$('.hand.active')
 			.removeClass('select')
-			.removeClass('four')
+			.removeClass('five')
 			.addClass('twelve');
 		draw_player('.hand.active', get_player('.hand.active'), false, 'twelve');
 	});
