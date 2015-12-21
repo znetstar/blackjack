@@ -44,7 +44,7 @@ var start_game = function () {
 	var timeouts = [];
 	$('.background .card').each(function () {
 		timeouts.push(setTimeout(function (ele) {
-			$(ele).css({transition: 'all 10s', position: 'relative' }).animate({ left: random_int(window.screen.width, window.screen.width+1000)+'px', top: random_int(window.screen.height, window.screen.height+1000)+'px' });
+			$(ele).css({transition: 'all 10s', position: 'relative' }).velocity({ left: random_int(window.screen.width, window.screen.width+1000)+'px', top: random_int(window.screen.height, window.screen.height+1000)+'px' });
 		}, delay, this));
 		delay = delay + 10;
 	});
