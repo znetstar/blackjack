@@ -12,14 +12,14 @@
     "url": "git+https://github.com/znetstar/blackjack.git"
   },
   "author": "Zachary Boyd <zachary@zacharyboyd.nyc>",
-  "license": "ISC",
+  "license": "GPL 3",
   "bugs": {
     "url": "https://github.com/znetstar/blackjack/issues"
   },
   "homepage": "https://github.com/znetstar/blackjack#readme",
   "dependencies": {
     "bower": "^1.7.1",
-    "express": "^4.13.3",
+    "chance": "^0.8.0",
     "jquery": "^2.1.4",
     "local-web-server": "^1.1.0"
   }
