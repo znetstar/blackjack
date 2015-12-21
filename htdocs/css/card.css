@@ -1,6 +1,8 @@
 .card, .hand .stars .star {
   margin: .5rem;
-  font-size: 4rem;
+  font-size: 6rem;
+  border-top: white 2rem solid;
+  border-bottom: white .35rem solid;
   line-height: 5rem;
   display: inline-block;
   transition: all .5s;
@@ -9,10 +11,10 @@
   min-width: 1em;
   background: white;
   /* padding: 0px; */
-  border-top: white solid 5px;
   border-radius: 5px;
   cursor: pointer;
 }
+
 
 
 .card div {

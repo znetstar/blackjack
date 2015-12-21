@@ -50,6 +50,12 @@ body {
   top: 0px;
 }
 
+.background .card {
+  font-size: 4rem;
+  border-bottom: none;
+  border-top: white solid 0px;
+}
+
 .logo h1 {
   font-size: 1em;
 }
@@ -110,6 +116,27 @@ body {
 }
 
 .controls {
-  margin: 0 auto;
-  margin-bottom: 0;
+  width: 60%;
+  position: fixed;
+  bottom: 2rem;
+  left: 20%;
+}
+
+.control {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 4rem;
+}
+
+.row.pointer {
+  position: relative;
+  height: 8rem;
+  bottom: 5.5rem;
+}
+
+.row.win {
+  position: relative;
+  bottom: 10rem;
 }
