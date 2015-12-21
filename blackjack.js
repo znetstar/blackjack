@@ -272,7 +272,7 @@ Blackjack.Game = (function() {
 		// Create a new Game
 		constructor(num_players) {
 			// if the game has less than two players throw an error
-			if (num_players < 3) {
+			if (num_players < 2) {
 				throw new Error('A game must have at least two players');
 			}
 			// otherwise initialize a new deck

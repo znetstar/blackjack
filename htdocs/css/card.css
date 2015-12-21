@@ -1,3 +1,6 @@
+/* Stylesheet for the playing cards */
+
+/* For the points awarded to players after winning a game */
 .card, .hand .stars .star {
   margin: .5rem;
   font-size: 6rem;
@@ -15,8 +18,7 @@
   cursor: pointer;
 }
 
-
-
+/* For the div  */
 .card div {
   height: 100%;
   width: 100%;

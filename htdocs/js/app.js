@@ -1,8 +1,7 @@
 'use strict';
 
-// Taken from http://mzl.la/1OVNxWX
 function random_int(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Blackjack.Chance.integer({min: min, max: max });
 }
 
 function render_card(id, hidden, value) {
