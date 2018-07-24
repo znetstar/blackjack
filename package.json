@@ -4,7 +4,7 @@
   "main": "blackjack.js",
   "description": "A library for playing Blackjack",
   "scripts": {
-    "start": "node_modules/.bin/ws",
+    "start": "node ./server.js",
     "postinstall": "bower install --allow-root"
   },
   "repository": {
@@ -20,7 +20,7 @@
   "dependencies": {
     "bower": "^1.7.1",
     "chance": "^0.8.0",
-    "jquery": "^2.1.4",
-    "local-web-server": "^1.1.0"
+    "express": "^4.16.3",
+    "jquery": "^2.1.4"
   }
 }
