@@ -12,7 +12,7 @@
     "url": "git+https://github.com/znetstar/blackjack.git"
   },
   "author": "Zachary Boyd <zachary@zacharyboyd.nyc>",
-  "license": "GPL 3",
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/znetstar/blackjack/issues"
   },
