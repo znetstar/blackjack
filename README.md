@@ -1,5 +1,6 @@
 # Black Jack (21)
-![](images/suits.png)
+
+[Live demo](https://blackjack.projects.zacharyboyd.nyc)
 
 ---
 
